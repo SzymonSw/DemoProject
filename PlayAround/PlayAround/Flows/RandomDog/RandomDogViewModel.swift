@@ -26,10 +26,11 @@ class RandomDogViewModel {
     }
 
     func viewDidLoad() {
-        fetchRandomImageUrl()
+        fetchRandomImages()
     }
 
-    func fetchRandomImageUrl() {
+    func fetchRandomImages() {
+        state = .loading
         Task {
             do {
                 let images = try await dependencies.dogsApi.fetchRandomDogImages(number: 9)
@@ -43,6 +44,10 @@ class RandomDogViewModel {
                 }
             }
         }
+    }
+    
+    func redoTapped() {
+        fetchRandomImages()
     }
 }
 

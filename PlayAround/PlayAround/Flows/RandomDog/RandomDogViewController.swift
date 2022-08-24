@@ -14,6 +14,10 @@ protocol DogsViewControllerDelegate: AnyObject {
 }
 
 class RandomDogViewController: UIViewController {
+    enum Constatns {
+        static let imageHeight: CGFloat = 200
+        static let imagesSpacing: CGFloat = 10
+    }
     var cancellables = Set<AnyCancellable>()
     
     let viewModel: RandomDogViewModel
@@ -24,6 +28,13 @@ class RandomDogViewController: UIViewController {
         indicatorView.style = .large
         return indicatorView
     }()
+    
+    lazy var redoButton = UIBarButtonItem(systemItem: .refresh, primaryAction: UIAction(handler: { [unowned self] _ in
+        self.viewModel.redoTapped()
+    }), menu: nil)
+    
+    let scrollView = UIScrollView()
+    var imagesStack: UIStackView?
         
     init(viewModel: RandomDogViewModel, delegate: DogsViewControllerDelegate) {
         self.viewModel = viewModel
@@ -50,11 +61,16 @@ class RandomDogViewController: UIViewController {
             switch state {
             case .success(let images):
                 loadingView.stopAnimating()
+                redoButton.isEnabled = true
                 self.showImages(images: images)
             case .loading:
+                imagesStack?.removeFromSuperview()
                 loadingView.startAnimating()
+                redoButton.isEnabled = false
+
             case .failure(let error):
                 loadingView.stopAnimating()
+                redoButton.isEnabled = true
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { _ in
                     self.delegate?.dogsViewControllerWantsToClose()
@@ -65,16 +81,9 @@ class RandomDogViewController: UIViewController {
     }
     
     private func setupViews() {
+        title = "Random Dogs"
         view.backgroundColor = .white
         
-        view.addSubview(loadingView)
-        loadingView.snp.makeConstraints { make in
-            make.centerY.centerX.equalToSuperview()
-        }
-    }
-    
-    private func showImages(images: [UIImage]) {
-        let scrollView = UIScrollView()
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -82,12 +91,21 @@ class RandomDogViewController: UIViewController {
             make.left.right.equalToSuperview()
         }
         
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = 10
+        view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { make in
+            make.centerY.centerX.equalToSuperview()
+        }
         
-        scrollView.addSubview(stack)
-        stack.snp.makeConstraints { make in
+        navigationItem.setRightBarButton(redoButton, animated: false)
+    }
+    
+    private func showImages(images: [UIImage]) {
+        imagesStack = UIStackView()
+        imagesStack!.axis = .vertical
+        imagesStack!.spacing = Constatns.imagesSpacing
+        
+        scrollView.addSubview(imagesStack!)
+        imagesStack!.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.width.equalTo(view.frame.width)
         }
@@ -98,10 +116,10 @@ class RandomDogViewController: UIViewController {
             imageView.image = image
             
             imageView.snp.makeConstraints { make in
-                make.height.equalTo(200)
+                make.height.equalTo(Constatns.imageHeight)
             }
             
-            stack.addArrangedSubview(imageView)
+            imagesStack!.addArrangedSubview(imageView)
         }
     }
 }

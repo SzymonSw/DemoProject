@@ -16,15 +16,14 @@ struct TheItem: Identifiable, Hashable {
 }
 
 struct SimpleSwiftUIView: View {
-    
     static let items = [
         TheItem(name: "Name_1", secondName: "SName_1"),
         TheItem(name: "Name_2", secondName: "SName_2"),
         TheItem(name: "Name_3", secondName: "SName_3")
     ]
-    
+
     @State var selectedItem = items.first!
-        
+
     var body: some View {
         Form {
             Picker("Select item", selection: $selectedItem) {

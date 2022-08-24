@@ -24,8 +24,6 @@ extension XCTestCase {
         file _: StaticString = #file,
         line _: UInt = #line
     ) throws -> T.Output {
-        // This time, we use Swift's Result type to keep track
-        // of the result of our Combine pipeline:
         var result: Result<T.Output, Error>?
         let expectation = XCTestExpectation(description: "Awaiting publisher")
 
@@ -44,11 +42,6 @@ extension XCTestCase {
                 result = .success(value)
             }
         )
-
-        // Just like before, we await the expectation that we
-        // created at the top of our test, and once done, we
-        // also cancel our cancellable to avoid getting any
-        // unused variable warnings:
         _ = XCTWaiter.wait(for: [expectation], timeout: timeout)
         cancellable.cancel()
 

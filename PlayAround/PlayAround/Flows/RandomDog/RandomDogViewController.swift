@@ -42,7 +42,6 @@ class RandomDogViewController: UIViewController {
         
         bindViewModel()
         viewModel.viewDidLoad()
-        
     }
     
     private func bindViewModel() {
@@ -54,7 +53,6 @@ class RandomDogViewController: UIViewController {
                 self.showImages(images: images)
             case .loading:
                 loadingView.startAnimating()
-                break
             case .failure(let error):
                 loadingView.stopAnimating()
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)

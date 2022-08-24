@@ -40,11 +40,10 @@ class RandomDogViewModel {
                     state = .failure(error: error)
                 } else {
                     state = .failure(error: .otherError)
-
                 }
             }
         }
-    }   
+    }
 }
 
 enum CustomError: String, Error {

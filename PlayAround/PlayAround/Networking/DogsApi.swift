@@ -55,7 +55,7 @@ class DogsApi: DogsAPIProvider {
 
         })
     }
-    
+
     func fetch2RandomDogImages() async throws -> [UIImage] {
         async let image1 = fetchRandomDogImage()
         async let image2 = fetchRandomDogImage()

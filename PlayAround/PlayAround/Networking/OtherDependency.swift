@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol OtherDependencyProvider {
-    
-}
+protocol OtherDependencyProvider {}
 
-class OtherDependency: OtherDependencyProvider {
-    
-}
+class OtherDependency: OtherDependencyProvider {}

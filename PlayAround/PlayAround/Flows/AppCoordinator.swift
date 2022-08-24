@@ -5,8 +5,8 @@
 //  Created by Szymon Swietek on 02/08/2022.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 protocol HasDogApiPrvider {
     var dogsApi: DogsAPIProvider { get }
@@ -23,9 +23,8 @@ struct AppDependency: HasDogApiPrvider, HasOtherDependencyProvider {
 
 @MainActor
 class AppCoordinator {
-    
     var mainNav: UINavigationController!
-    
+
     var dependencies: AppDependency!
 
     func startWith(rootNavController: UINavigationController) {
@@ -41,7 +40,7 @@ class AppCoordinator {
         let vc = RandomDogViewController(viewModel: vm, delegate: self)
         mainNav.pushViewController(vc, animated: true)
     }
-    
+
     func pushToSimpleSwiftUI() {
         let vc = UIHostingController(rootView: SimpleSwiftUIView())
         mainNav.pushViewController(vc, animated: true)
@@ -52,7 +51,7 @@ extension AppCoordinator: MainViewControllerDelegate {
     func mainViewControllerWantsToShowSwiftUI() {
         pushToSimpleSwiftUI()
     }
-    
+
     func mainViewControllerWantsToShowRandomDog() {
         pushToRandomDog()
     }

@@ -18,12 +18,12 @@ class RandomDogViewModelTests: XCTestCase {
     static let testImages = [UIImage(), UIImage(), UIImage()]
     static var testScenario: TestScenario = .successfulRequest
     var cancellables = Set<AnyCancellable>()
-    
+
     enum TestScenario {
         case successfulRequest
         case failedRequest
     }
-    
+
     @MainActor
     override func setUpWithError() throws {
         let dependenciesMock = AppDependency(dogsApi: DogsApiMock(), otherDependency: OtherDependencyMock())
@@ -38,23 +38,23 @@ class RandomDogViewModelTests: XCTestCase {
         try awaitPublisher(sut.$state.collectNext(1))
         XCTAssert(sut.state == .success(images: Self.testImages))
     }
-    
+
     func testViewDidLoad_v2() throws {
         Self.testScenario = .successfulRequest
 
         sut.viewDidLoad()
         XCTAssert(sut.state == .loading)
-        
+
         let expectation = XCTestExpectation(description: "Awaiting publisher")
-        
+
         sut.$state.dropFirst().sink { _ in
             expectation.fulfill()
         }.store(in: &cancellables)
-        
+
         _ = XCTWaiter.wait(for: [expectation], timeout: 0.5)
         XCTAssert(sut.state == .success(images: Self.testImages))
     }
-    
+
     func testFailedRequest() throws {
         Self.testScenario = .failedRequest
         sut.viewDidLoad()
@@ -65,7 +65,7 @@ class RandomDogViewModelTests: XCTestCase {
     }
 }
 
-fileprivate class DogsApiMock: DogsAPIProvider {
+private class DogsApiMock: DogsAPIProvider {
     func fetchRandomDogImage() async throws -> UIImage {
         switch await RandomDogViewModelTests.testScenario {
         case .successfulRequest:
@@ -85,6 +85,4 @@ fileprivate class DogsApiMock: DogsAPIProvider {
     }
 }
 
-fileprivate class OtherDependencyMock: OtherDependencyProvider {
-    
-}
+private class OtherDependencyMock: OtherDependencyProvider {}

@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     lazy var randomDogButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.blue, for: .normal)
-        button.setTitle("Random Dogs", for: .normal)
+        button.setTitle("Random Dogs Batch", for: .normal)
         return button
     }()
     

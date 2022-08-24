@@ -15,11 +15,10 @@
 		FFAD7850289912EE000DFCBC /* DogsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD784F289912EE000DFCBC /* DogsApi.swift */; };
 		FFAD7853289914A2000DFCBC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD7852289914A2000DFCBC /* AppCoordinator.swift */; };
 		FFC1E93F2893D60E00D3D3AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC1E93E2893D60E00D3D3AA /* AppDelegate.swift */; };
-		FFC1E9432893D60E00D3D3AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC1E9422893D60E00D3D3AA /* ViewController.swift */; };
 		FFC1E9482893D60E00D3D3AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC1E9472893D60E00D3D3AA /* Assets.xcassets */; };
 		FFC1E94B2893D60E00D3D3AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC1E9492893D60E00D3D3AA /* LaunchScreen.storyboard */; };
 		FFC1E9542893D80400D3D3AA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FFC1E9532893D80400D3D3AA /* SnapKit */; };
-		FFC1E9562893D81B00D3D3AA /* SnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC1E9552893D81B00D3D3AA /* SnapViewController.swift */; };
+		FFC1E9562893D81B00D3D3AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC1E9552893D81B00D3D3AA /* MainViewController.swift */; };
 		FFC1E9582893F72C00D3D3AA /* RandomDogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC1E9572893F72C00D3D3AA /* RandomDogViewModel.swift */; };
 		FFC1E95A2893F73800D3D3AA /* RandomDogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC1E9592893F73800D3D3AA /* RandomDogViewController.swift */; };
 		FFC1E95D2893FB1500D3D3AA /* DogImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC1E95C2893FB1500D3D3AA /* DogImage.swift */; };
@@ -45,11 +44,10 @@
 		FFAD7852289914A2000DFCBC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		FFC1E93B2893D60E00D3D3AA /* PlayAround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayAround.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC1E93E2893D60E00D3D3AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FFC1E9422893D60E00D3D3AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FFC1E9472893D60E00D3D3AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFC1E94A2893D60E00D3D3AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFC1E94C2893D60E00D3D3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FFC1E9552893D81B00D3D3AA /* SnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapViewController.swift; sourceTree = "<group>"; };
+		FFC1E9552893D81B00D3D3AA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FFC1E9572893F72C00D3D3AA /* RandomDogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDogViewModel.swift; sourceTree = "<group>"; };
 		FFC1E9592893F73800D3D3AA /* RandomDogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDogViewController.swift; sourceTree = "<group>"; };
 		FFC1E95C2893FB1500D3D3AA /* DogImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogImage.swift; sourceTree = "<group>"; };
@@ -104,6 +102,7 @@
 		FFAD785128991497000DFCBC /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				FFC1E9552893D81B00D3D3AA /* MainViewController.swift */,
 				FFE55D4A2894FFB000D0A2C4 /* RandomDog */,
 				FF42EC7028A4DF830079A6D9 /* SimpleSwiftUI */,
 				FFAD7852289914A2000DFCBC /* AppCoordinator.swift */,
@@ -136,8 +135,6 @@
 				FFAD784E289912E2000DFCBC /* Networking */,
 				FFC1E95B2893FAFE00D3D3AA /* Models */,
 				FFC1E93E2893D60E00D3D3AA /* AppDelegate.swift */,
-				FFC1E9422893D60E00D3D3AA /* ViewController.swift */,
-				FFC1E9552893D81B00D3D3AA /* SnapViewController.swift */,
 				FFC1E9472893D60E00D3D3AA /* Assets.xcassets */,
 				FFC1E9492893D60E00D3D3AA /* LaunchScreen.storyboard */,
 				FFC1E94C2893D60E00D3D3AA /* Info.plist */,
@@ -279,8 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFC1E9562893D81B00D3D3AA /* SnapViewController.swift in Sources */,
-				FFC1E9432893D60E00D3D3AA /* ViewController.swift in Sources */,
+				FFC1E9562893D81B00D3D3AA /* MainViewController.swift in Sources */,
 				FFAD7850289912EE000DFCBC /* DogsApi.swift in Sources */,
 				FF9F1F7B289A8E3A00A9F9C6 /* OtherDependency.swift in Sources */,
 				FFC1E95A2893F73800D3D3AA /* RandomDogViewController.swift in Sources */,

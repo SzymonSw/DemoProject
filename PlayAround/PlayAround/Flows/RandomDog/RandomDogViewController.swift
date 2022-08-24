@@ -18,6 +18,12 @@ class RandomDogViewController: UIViewController {
     
     let viewModel: RandomDogViewModel
     weak var delegate: DogsViewControllerDelegate?
+    
+    let loadingView: UIActivityIndicatorView = {
+        let indicatorView = UIActivityIndicatorView()
+        indicatorView.style = .large
+        return indicatorView
+    }()
         
     init(viewModel: RandomDogViewModel, delegate: DogsViewControllerDelegate) {
         self.viewModel = viewModel
@@ -44,10 +50,13 @@ class RandomDogViewController: UIViewController {
             
             switch state {
             case .success(let images):
+                loadingView.stopAnimating()
                 self.showImages(images: images)
             case .loading:
+                loadingView.startAnimating()
                 break
             case .failure(let error):
+                loadingView.stopAnimating()
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { _ in
                     self.delegate?.dogsViewControllerWantsToClose()
@@ -59,13 +68,20 @@ class RandomDogViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = .white
+        
+        view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { make in
+            make.centerY.centerX.equalToSuperview()
+        }
     }
     
     private func showImages(images: [UIImage]) {
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.left.right.equalToSuperview()
         }
         
         let stack = UIStackView()

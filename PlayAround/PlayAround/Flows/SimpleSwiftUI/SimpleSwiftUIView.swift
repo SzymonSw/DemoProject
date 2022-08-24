@@ -18,9 +18,9 @@ struct TheItem: Identifiable, Hashable {
 struct SimpleSwiftUIView: View {
     
     static let items = [
-        TheItem(name: "Name 1", secondName: "Second name 1"),
-        TheItem(name: "Name 1", secondName: "Second name 1"),
-        TheItem(name: "Name 1", secondName: "Second name 1")
+        TheItem(name: "Name_1", secondName: "SName_1"),
+        TheItem(name: "Name_2", secondName: "SName_2"),
+        TheItem(name: "Name_3", secondName: "SName_3")
     ]
     
     @State var selectedItem = items.first!
@@ -32,7 +32,7 @@ struct SimpleSwiftUIView: View {
                     Text(item.name)
                 }
             }
-            Text("Selected item \(selectedItem.name) \(selectedItem.secondName)")
+            Text("Selected:  \(selectedItem.name) \(selectedItem.secondName)")
         }
     }
 }

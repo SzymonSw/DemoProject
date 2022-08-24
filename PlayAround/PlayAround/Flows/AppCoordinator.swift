@@ -32,7 +32,7 @@ class AppCoordinator {
         mainNav = rootNavController
         dependencies = AppDependency(dogsApi: DogsApi(), otherDependency: OtherDependency())
 
-        let rootViewController = SnapViewController(delegate: self)
+        let rootViewController = MainViewController(delegate: self)
         mainNav.setViewControllers([rootViewController], animated: false)
     }
 
@@ -48,12 +48,12 @@ class AppCoordinator {
     }
 }
 
-extension AppCoordinator: SnapViewControllerDelegate {
-    func snapViewControllerWantsToShowSwiftUI() {
+extension AppCoordinator: MainViewControllerDelegate {
+    func mainViewControllerWantsToShowSwiftUI() {
         pushToSimpleSwiftUI()
     }
     
-    func snapViewControllerWantsToShowRandomDog() {
+    func mainViewControllerWantsToShowRandomDog() {
         pushToRandomDog()
     }
 }

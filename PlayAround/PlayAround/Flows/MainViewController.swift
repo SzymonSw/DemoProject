@@ -8,12 +8,12 @@
 import SnapKit
 import UIKit
 
-protocol SnapViewControllerDelegate: AnyObject {
-    func snapViewControllerWantsToShowRandomDog()
-    func snapViewControllerWantsToShowSwiftUI()
+protocol MainViewControllerDelegate: AnyObject {
+    func mainViewControllerWantsToShowRandomDog()
+    func mainViewControllerWantsToShowSwiftUI()
 }
 
-class SnapViewController: UIViewController {
+class MainViewController: UIViewController {
     lazy var randomDogButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.blue, for: .normal)
@@ -28,9 +28,9 @@ class SnapViewController: UIViewController {
         return button
     }()
     
-    weak var delegate: SnapViewControllerDelegate?
+    weak var delegate: MainViewControllerDelegate?
 
-    init(delegate: SnapViewControllerDelegate) {
+    init(delegate: MainViewControllerDelegate) {
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
@@ -49,11 +49,11 @@ class SnapViewController: UIViewController {
     
     private func bind() {
         randomDogButton.addAction(UIAction(handler: { [unowned self] _ in
-            self.delegate?.snapViewControllerWantsToShowRandomDog()
+            self.delegate?.mainViewControllerWantsToShowRandomDog()
         }), for: .touchUpInside)
         
         swiftUIButton.addAction(UIAction(handler: { [unowned self] _ in
-            self.delegate?.snapViewControllerWantsToShowSwiftUI()
+            self.delegate?.mainViewControllerWantsToShowSwiftUI()
         }), for: .touchUpInside)
     }
     

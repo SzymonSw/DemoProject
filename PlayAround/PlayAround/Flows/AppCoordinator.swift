@@ -43,6 +43,7 @@ class AppCoordinator {
 
     func pushToSimpleSwiftUI() {
         let vc = UIHostingController(rootView: SimpleSwiftUIView())
+        vc.title = "Swift UI"
         mainNav.pushViewController(vc, animated: true)
     }
 }

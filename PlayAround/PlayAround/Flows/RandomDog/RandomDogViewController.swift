@@ -82,7 +82,7 @@ class RandomDogViewController: UIViewController {
     
     private func setupViews() {
         title = "Random Dogs"
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundColor
         
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in

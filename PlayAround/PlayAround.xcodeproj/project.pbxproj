@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FF42EC7228A4DF990079A6D9 /* SimpleSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42EC7128A4DF990079A6D9 /* SimpleSwiftUIView.swift */; };
 		FF617CB5289945020038E49D /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = FF617CB4289945020038E49D /* Algorithms */; };
+		FF73168D28B6665B00C7BAF3 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73168C28B6665B00C7BAF3 /* UIColor+Extensions.swift */; };
 		FF9F1F77289A417700A9F9C6 /* RandomDogViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9F1F76289A417700A9F9C6 /* RandomDogViewModelTests.swift */; };
 		FF9F1F79289A492600A9F9C6 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9F1F78289A492600A9F9C6 /* TestHelpers.swift */; };
 		FF9F1F7B289A8E3A00A9F9C6 /* OtherDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9F1F7A289A8E3A00A9F9C6 /* OtherDependency.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		FF42EC7128A4DF990079A6D9 /* SimpleSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSwiftUIView.swift; sourceTree = "<group>"; };
+		FF73168C28B6665B00C7BAF3 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		FF9F1F6D289A415000A9F9C6 /* PlayAroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayAroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9F1F76289A417700A9F9C6 /* RandomDogViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDogViewModelTests.swift; sourceTree = "<group>"; };
 		FF9F1F78289A492600A9F9C6 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 				FF42EC7128A4DF990079A6D9 /* SimpleSwiftUIView.swift */,
 			);
 			path = SimpleSwiftUI;
+			sourceTree = "<group>";
+		};
+		FF73168B28B6664A00C7BAF3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FF73168C28B6665B00C7BAF3 /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FF9F1F6E289A415000A9F9C6 /* PlayAroundTests */ = {
@@ -131,6 +141,7 @@
 		FFC1E93D2893D60E00D3D3AA /* PlayAround */ = {
 			isa = PBXGroup;
 			children = (
+				FF73168B28B6664A00C7BAF3 /* Extensions */,
 				FFAD785128991497000DFCBC /* Flows */,
 				FFAD784E289912E2000DFCBC /* Networking */,
 				FFC1E95B2893FAFE00D3D3AA /* Models */,
@@ -277,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFC1E9562893D81B00D3D3AA /* MainViewController.swift in Sources */,
+				FF73168D28B6665B00C7BAF3 /* UIColor+Extensions.swift in Sources */,
 				FFAD7850289912EE000DFCBC /* DogsApi.swift in Sources */,
 				FF9F1F7B289A8E3A00A9F9C6 /* OtherDependency.swift in Sources */,
 				FFC1E95A2893F73800D3D3AA /* RandomDogViewController.swift in Sources */,

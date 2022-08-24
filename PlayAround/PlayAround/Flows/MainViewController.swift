@@ -58,6 +58,7 @@ class MainViewController: UIViewController {
     }
     
     private func setupViews() {
+        view.backgroundColor = .backgroundColor
         view.addSubview(randomDogButton)
         randomDogButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()

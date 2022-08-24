@@ -32,6 +32,7 @@ struct SimpleSwiftUIView: View {
                 }
             }
             Text("Selected:  \(selectedItem.name) \(selectedItem.secondName)")
+                .foregroundColor(.secondary)
         }
     }
 }

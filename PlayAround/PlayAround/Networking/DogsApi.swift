@@ -15,10 +15,12 @@ protocol DogsAPIProvider {
 
 class DogsApi: DogsAPIProvider {
     let session = URLSession(configuration: URLSessionConfiguration.default)
-
+    let host =  URL(string: "https://dog.ceo")!
+    
     func fetchRandomDogImage() async throws -> UIImage {
-        let urlRequest = URLRequest(url: URL(string: "https://dog.ceo/api/breeds/image/random")!)
-        print("Random fetch started")
+        let url = host.appendingPathComponent("/api/breeds/image/random")
+        
+        let urlRequest = URLRequest(url: url)
         do {
             let data = try await session.data(for: urlRequest)
             let decoder = JSONDecoder()
@@ -27,7 +29,6 @@ class DogsApi: DogsAPIProvider {
                 let imageRequest = URLRequest(url: imageUrl)
                 let imageData = try await session.data(for: imageRequest).0
                 if let image = UIImage(data: imageData) {
-                    print("Random fetch finished with success")
                     return image
                 } else {
                     throw CustomError.couldNotLoadImage
@@ -56,6 +57,7 @@ class DogsApi: DogsAPIProvider {
         })
     }
 
+    //simple version but only for static number of request
     func fetch2RandomDogImages() async throws -> [UIImage] {
         async let image1 = fetchRandomDogImage()
         async let image2 = fetchRandomDogImage()

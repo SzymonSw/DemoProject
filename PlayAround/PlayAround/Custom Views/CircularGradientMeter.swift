@@ -25,6 +25,12 @@ class CircularGradientMeter: UIView {
         }
     }
 
+    override var bounds: CGRect {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+
     private lazy var percentageValueLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -32,14 +38,13 @@ class CircularGradientMeter: UIView {
         return label
     }()
 
-    init(primaryColor: UIColor, secondaryColor: UIColor, meterBackgroundColor: UIColor,  textColor: UIColor) {
-        
+    init(primaryColor: UIColor, secondaryColor: UIColor, meterBackgroundColor: UIColor, textColor: UIColor) {
         self.primaryColor = primaryColor
         self.secondaryColor = secondaryColor
         self.meterBackgroundColor = meterBackgroundColor
         self.textColor = textColor
         super.init(frame: CGRect.zero)
-        
+
         addSubviews()
         setValueText()
     }

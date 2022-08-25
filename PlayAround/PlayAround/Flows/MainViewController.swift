@@ -87,8 +87,4 @@ class MainViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
     }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        circularMeter.setNeedsDisplay()
-    }
 }

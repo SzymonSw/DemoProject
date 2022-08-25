@@ -10,7 +10,6 @@ import UIKit
 class CircularGradientMeter: UIView {
     private var backgroundLayer: CAShapeLayer?
     private var frontLayer: CAGradientLayer?
-
     private let lineWidth: CGFloat = 15
 
     private let primaryColor: UIColor

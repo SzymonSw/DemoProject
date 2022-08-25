@@ -23,9 +23,9 @@ struct AppDependency: HasDogApiPrvider, HasOtherDependencyProvider {
 
 @MainActor
 class AppCoordinator {
-    var mainNav: UINavigationController!
+    private var mainNav: UINavigationController!
 
-    var dependencies: AppDependency!
+    private var dependencies: AppDependency!
 
     func startWith(rootNavController: UINavigationController) {
         mainNav = rootNavController
@@ -35,13 +35,13 @@ class AppCoordinator {
         mainNav.setViewControllers([rootViewController], animated: false)
     }
 
-    func pushToRandomDog() {
+    private func pushToRandomDog() {
         let vm = RandomDogViewModel(dependencies: dependencies)
         let vc = RandomDogViewController(viewModel: vm, delegate: self)
         mainNav.pushViewController(vc, animated: true)
     }
 
-    func pushToSimpleSwiftUI() {
+    private func pushToSimpleSwiftUI() {
         let vc = UIHostingController(rootView: SimpleSwiftUIView())
         vc.title = "Swift UI"
         mainNav.pushViewController(vc, animated: true)

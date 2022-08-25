@@ -10,6 +10,8 @@
 		FF42EC7228A4DF990079A6D9 /* SimpleSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42EC7128A4DF990079A6D9 /* SimpleSwiftUIView.swift */; };
 		FF617CB5289945020038E49D /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = FF617CB4289945020038E49D /* Algorithms */; };
 		FF73168D28B6665B00C7BAF3 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73168C28B6665B00C7BAF3 /* UIColor+Extensions.swift */; };
+		FF73169028B74C9900C7BAF3 /* CircularGradientMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73168F28B74C9900C7BAF3 /* CircularGradientMeter.swift */; };
+		FF73169228B74D4B00C7BAF3 /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73169128B74D4B00C7BAF3 /* Comparable+Extensions.swift */; };
 		FF9F1F77289A417700A9F9C6 /* RandomDogViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9F1F76289A417700A9F9C6 /* RandomDogViewModelTests.swift */; };
 		FF9F1F79289A492600A9F9C6 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9F1F78289A492600A9F9C6 /* TestHelpers.swift */; };
 		FF9F1F7B289A8E3A00A9F9C6 /* OtherDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9F1F7A289A8E3A00A9F9C6 /* OtherDependency.swift */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		FF42EC7128A4DF990079A6D9 /* SimpleSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleSwiftUIView.swift; sourceTree = "<group>"; };
 		FF73168C28B6665B00C7BAF3 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		FF73168F28B74C9900C7BAF3 /* CircularGradientMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularGradientMeter.swift; sourceTree = "<group>"; };
+		FF73169128B74D4B00C7BAF3 /* Comparable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extensions.swift"; sourceTree = "<group>"; };
 		FF9F1F6D289A415000A9F9C6 /* PlayAroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayAroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9F1F76289A417700A9F9C6 /* RandomDogViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDogViewModelTests.swift; sourceTree = "<group>"; };
 		FF9F1F78289A492600A9F9C6 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
@@ -87,8 +91,17 @@
 			isa = PBXGroup;
 			children = (
 				FF73168C28B6665B00C7BAF3 /* UIColor+Extensions.swift */,
+				FF73169128B74D4B00C7BAF3 /* Comparable+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FF73168E28B74C7600C7BAF3 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				FF73168F28B74C9900C7BAF3 /* CircularGradientMeter.swift */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		FF9F1F6E289A415000A9F9C6 /* PlayAroundTests */ = {
@@ -141,6 +154,7 @@
 		FFC1E93D2893D60E00D3D3AA /* PlayAround */ = {
 			isa = PBXGroup;
 			children = (
+				FF73168E28B74C7600C7BAF3 /* Custom Views */,
 				FF73168B28B6664A00C7BAF3 /* Extensions */,
 				FFAD785128991497000DFCBC /* Flows */,
 				FFAD784E289912E2000DFCBC /* Networking */,
@@ -294,7 +308,9 @@
 				FFC1E95A2893F73800D3D3AA /* RandomDogViewController.swift in Sources */,
 				FFAD7853289914A2000DFCBC /* AppCoordinator.swift in Sources */,
 				FF42EC7228A4DF990079A6D9 /* SimpleSwiftUIView.swift in Sources */,
+				FF73169228B74D4B00C7BAF3 /* Comparable+Extensions.swift in Sources */,
 				FFC1E93F2893D60E00D3D3AA /* AppDelegate.swift in Sources */,
+				FF73169028B74C9900C7BAF3 /* CircularGradientMeter.swift in Sources */,
 				FFC1E95D2893FB1500D3D3AA /* DogImage.swift in Sources */,
 				FFC1E9582893F72C00D3D3AA /* RandomDogViewModel.swift in Sources */,
 			);

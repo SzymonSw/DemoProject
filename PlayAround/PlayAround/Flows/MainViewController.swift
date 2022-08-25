@@ -28,6 +28,11 @@ class MainViewController: UIViewController {
         return button
     }()
     
+    let circularMeter = CircularGradientMeter(primaryColor: .primaryMeterColor,
+                                              secondaryColor: .secondaryMeterColor,
+                                              meterBackgroundColor: .backgroundMeterColor,
+                                              textColor: .meterTextColor)
+
     weak var delegate: MainViewControllerDelegate?
 
     init(delegate: MainViewControllerDelegate) {
@@ -45,6 +50,8 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         bind()
+        
+        circularMeter.fillPercentage = 75
     }
     
     private func bind() {
@@ -59,15 +66,24 @@ class MainViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = .backgroundColor
-        view.addSubview(randomDogButton)
-        randomDogButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.centerX.equalToSuperview()
-        }
         
-        view.addSubview(swiftUIButton)
-        swiftUIButton.snp.makeConstraints { make in
-            make.top.equalTo(randomDogButton.snp.bottom).offset(5)
+        let stack = UIStackView()
+        stack.axis = .vertical
+        view.addSubview(stack)
+        stack.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.left.right.equalToSuperview()
+        }
+        stack.addArrangedSubview(randomDogButton)
+        stack.addArrangedSubview(swiftUIButton)
+        
+        view.addSubview(circularMeter)
+        circularMeter.snp.makeConstraints { make in
+            make.height.equalTo(200)
+            make.width.lessThanOrEqualTo(350)
+            make.left.equalToSuperview().offset(16).priority(750)
+            make.right.equalToSuperview().offset(-16).priority(750)
+            make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
         }
     }

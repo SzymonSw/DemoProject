@@ -18,23 +18,23 @@ class RandomDogViewController: UIViewController {
         static let imageHeight: CGFloat = 200
         static let imagesSpacing: CGFloat = 10
     }
-    var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     
-    let viewModel: RandomDogViewModel
+    private let viewModel: RandomDogViewModel
     weak var delegate: DogsViewControllerDelegate?
     
-    let loadingView: UIActivityIndicatorView = {
+    private let loadingView: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView()
         indicatorView.style = .large
         return indicatorView
     }()
     
-    lazy var redoButton = UIBarButtonItem(systemItem: .refresh, primaryAction: UIAction(handler: { [unowned self] _ in
+    private lazy var redoButton = UIBarButtonItem(systemItem: .refresh, primaryAction: UIAction(handler: { [unowned self] _ in
         self.viewModel.redoTapped()
     }), menu: nil)
     
-    let scrollView = UIScrollView()
-    var imagesStack: UIStackView?
+    private let scrollView = UIScrollView()
+    private var imagesStack: UIStackView?
         
     init(viewModel: RandomDogViewModel, delegate: DogsViewControllerDelegate) {
         self.viewModel = viewModel

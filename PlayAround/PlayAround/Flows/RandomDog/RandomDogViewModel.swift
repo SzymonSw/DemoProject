@@ -19,7 +19,7 @@ class RandomDogViewModel {
     }
 
     @Published var state: State = .loading
-    let dependencies: Dependencies
+    private let dependencies: Dependencies
 
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
@@ -28,8 +28,12 @@ class RandomDogViewModel {
     func viewDidLoad() {
         fetchRandomImages()
     }
+    
+    func redoTapped() {
+        fetchRandomImages()
+    }
 
-    func fetchRandomImages() {
+    private func fetchRandomImages() {
         state = .loading
         Task {
             do {
@@ -44,10 +48,6 @@ class RandomDogViewModel {
                 }
             }
         }
-    }
-    
-    func redoTapped() {
-        fetchRandomImages()
     }
 }
 

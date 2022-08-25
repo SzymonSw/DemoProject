@@ -11,11 +11,14 @@ class CircularGradientMeter: UIView {
     private var backgroundLayer: CAShapeLayer?
     private var frontLayer: CAGradientLayer?
     private let lineWidth: CGFloat = 15
+    private let animationTime: Double = 0.5
 
     private let primaryColor: UIColor
     private let secondaryColor: UIColor
     private let meterBackgroundColor: UIColor
     private let textColor: UIColor
+
+    private var isAnimating = false
 
     var fillPercentage = 0 {
         didSet {
@@ -51,6 +54,28 @@ class CircularGradientMeter: UIView {
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func animateTo(newPercentage: Int) {
+        guard newPercentage != fillPercentage, isAnimating == false else {
+            return
+        }
+        let diff = abs(fillPercentage - newPercentage)
+        let onePercentAnimTime = animationTime / Double(diff)
+        isAnimating = true
+        Timer.scheduledTimer(withTimeInterval: onePercentAnimTime, repeats: true) { [unowned self] timer in
+            if newPercentage == fillPercentage {
+                timer.invalidate()
+                isAnimating = false
+                return
+            }
+            if newPercentage < fillPercentage {
+                fillPercentage -= 1
+            } else {
+                fillPercentage += 1
+            }
+            setNeedsDisplay()
+        }
     }
 
     private func drawProgress() {

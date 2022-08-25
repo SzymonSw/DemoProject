@@ -28,6 +28,13 @@ class MainViewController: UIViewController {
         return button
     }()
     
+    lazy var animateButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.blue, for: .normal)
+        button.setTitle("Animate", for: .normal)
+        return button
+    }()
+    
     let circularMeter = CircularGradientMeter(primaryColor: .primaryMeterColor,
                                               secondaryColor: .secondaryMeterColor,
                                               meterBackgroundColor: .backgroundMeterColor,
@@ -50,8 +57,6 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         bind()
-        
-        circularMeter.fillPercentage = 75
     }
     
     private func bind() {
@@ -61,6 +66,10 @@ class MainViewController: UIViewController {
         
         swiftUIButton.addAction(UIAction(handler: { [unowned self] _ in
             self.delegate?.mainViewControllerWantsToShowSwiftUI()
+        }), for: .touchUpInside)
+        
+        animateButton.addAction(UIAction(handler: { [unowned self] _ in
+            circularMeter.animateTo(newPercentage: 77)
         }), for: .touchUpInside)
     }
     
@@ -85,6 +94,12 @@ class MainViewController: UIViewController {
             make.right.equalToSuperview().offset(-16).priority(750)
             make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
+        }
+        
+        circularMeter.addSubview(animateButton)
+        animateButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-10)
         }
     }
 }
